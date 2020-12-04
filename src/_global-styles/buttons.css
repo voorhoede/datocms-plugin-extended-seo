@@ -1,0 +1,12 @@
+button {
+  font-family: inherit;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 15px;
+  font-size: .9375rem;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}

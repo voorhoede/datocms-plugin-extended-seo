@@ -1,0 +1,98 @@
+{
+  "name": "datocms-plugin-extended-seo",
+  "homepage": "https://github.com/voorhoede/datocms-plugin-extended-seo",
+  "version": "1.0.0",
+  "description": "Extends SEO meta field",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development webpack-dev-server --port 5000",
+    "build": "NODE_ENV=production webpack --progress",
+    "addToProject": "yo datocms-plugin:add-to-project",
+    "prepublishOnly": "rimraf lib dist && mkdir dist && npm run build",
+    "lint": "eslint \"./src/*.js\"",
+    "test": "echo 1"
+  },
+  "keywords": [
+    "datocms",
+    "datocms-plugin",
+    "field-editor",
+    "seo-field"
+  ],
+  "files": [
+    "dist",
+    "docs"
+  ],
+  "author": "Voorhoede",
+  "license": "MIT",
+  "datoCmsPlugin": {
+    "title": "Extended Seo",
+    "previewImage": "docs/preview.gif",
+    "coverImage": "docs/cover.png",
+    "entryPoint": "dist/index.html",
+    "pluginType": "field_editor",
+    "fieldTypes": [
+      "seo"
+    ],
+    "parameters": {
+      "global": [
+        {
+          "id": "developmentMode",
+          "label": "Development mode",
+          "type": "boolean",
+          "required": true,
+          "default": false,
+          "hint": "Shows debug messages in console"
+        },
+        {
+          "id": "datoApiToken",
+          "label": "DatoCMS API Token",
+          "type": "string",
+          "required": true,
+          "default": false,
+          "hint": "Enter your DatoCMS API read-only token used to fetch images from your DatoCMS media library."
+        }
+      ],
+      "instance": [
+        {
+          "id": "defaultFields",
+          "label": "Default fields",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "hint": "A comma seperated list of the name that matches the corresponding string field. [title field, description field, image field]"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.54",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/register": "^7.0.0-beta.54",
+    "@babel/preset-react": "^7.10.4",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^8.0.0-beta",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.3.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.20.6",
+    "generator-datocms-plugin": "^1.0.24",
+    "html-webpack-inline-source-plugin": "^0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.3",
+    "serve": "^11.3.2",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.10",
+    "yo": "^3.1.1"
+  },
+  "dependencies": {
+    "datocms-client": "^3.2.0",
+    "html-webpack-tags-plugin": "^2.0.17",
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
+  }
+}
