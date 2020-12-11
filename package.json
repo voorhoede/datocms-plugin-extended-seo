@@ -36,14 +36,6 @@
     "parameters": {
       "global": [
         {
-          "id": "developmentMode",
-          "label": "Development mode",
-          "type": "boolean",
-          "required": true,
-          "default": false,
-          "hint": "Shows debug messages in console"
-        },
-        {
           "id": "datoApiToken",
           "label": "DatoCMS API Token",
           "type": "string",
@@ -53,6 +45,14 @@
         }
       ],
       "instance": [
+        {
+          "id": "canEdit",
+          "label": "Editor can edit field",
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "hint": "When this is turned on a editor can edit the title and description fields of this seo block."
+        },
         {
           "id": "defaultFields",
           "label": "Default fields",

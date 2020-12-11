@@ -7,7 +7,11 @@ import { buildPreviewURL } from './lib/helpers'
 
 export default function App({ plugin }) {
   const { getImageUrl } = useDato(plugin.parameters.global.datoApiToken)
+  const fieldPath = plugin.fieldPath
+  const fieldValue = plugin.getFieldValue(fieldPath)
+  const [fieldObject, setFieldObject] = useState(fieldValue)
 
+  const canEdit = plugin.parameters.instance.canEdit
   const defaultFields = plugin.parameters.instance.defaultFields
     .split(',')
     .map(field => field.trim())
@@ -16,8 +20,12 @@ export default function App({ plugin }) {
   const descriptionField = defaultFields[1]
   const imageField = defaultFields[2]
   const socialImageObject = plugin.getFieldValue(imageField)
-  const [socialTitle, setSocialTitle] = useState(plugin.getFieldValue(titleField))
-  const [socialDescription, setSocialDescription] = useState(plugin.getFieldValue(descriptionField))
+  const [socialTitle, setSocialTitle] = useState(
+    plugin.getFieldValue(titleField)
+  )
+  const [socialDescription, setSocialDescription] = useState(
+    plugin.getFieldValue(descriptionField)
+  )
   const [socialImage, setSocialImage] = useState('')
 
   async function fetchImage() {
@@ -33,7 +41,9 @@ export default function App({ plugin }) {
     const fieldName = plugin.fields[field].attributes.api_key
 
     if (defaultFields.indexOf(fieldName) !== -1) {
-      plugin.addFieldChangeListener(fieldName, newValue => changeSocialText(fieldName, newValue))
+      plugin.addFieldChangeListener(fieldName, newValue =>
+        changeSocialText(fieldName, newValue)
+      )
     }
   })
 
@@ -49,8 +59,17 @@ export default function App({ plugin }) {
       }
       case imageField: {
         setSocialImage(await getImageUrl(newValue))
+        break
       }
     }
+  }
+
+  function configureChange(changedField, newValue) {
+    setFieldObject(oldValue => {
+      const newObj = { ...oldValue, [changedField]: newValue }
+      plugin.setFieldValue(fieldPath, newObj)
+      return newObj
+    })
   }
 
   const socialTabs = Object.entries(socials).map(([title, slug]) => (
@@ -58,15 +77,21 @@ export default function App({ plugin }) {
       <iframe
         className="social-preview-card"
         title={title}
-        src={buildPreviewURL(slug, { title: socialTitle, description: socialDescription, image: socialImage })}
+        src={buildPreviewURL(slug, {
+          title: fieldObject?.title || socialTitle,
+          description: fieldObject?.description || socialDescription,
+          image: socialImage,
+        })}
       />
     </div>
   ))
 
   return (
-    <div className="container">
-      <Tabs>{socialTabs}</Tabs>
-    </div>
+    <main className="container">
+      <Tabs fieldValue={fieldObject} onConfigureChange={configureChange} canConfigure={canEdit}>
+        {socialTabs}
+      </Tabs>
+    </main>
   )
 }
 
