@@ -13,6 +13,32 @@
   color: #848484;
 }
 
+.tabs__tab-configure {
+  margin-left: auto;
+  align-self: center;
+  padding: .6em .8em;
+}
+
+.tabs__tab-configure button {
+  font-weight: bold;
+  color: var(--accent-color);
+  transition: .3s ease;
+}
+
+.tabs__tab-configure button:hover,
+.tabs__tab-configure button:focus {
+  opacity: .8;
+}
+
+.tabs__tab-configure svg {
+  fill: var(--accent-color);
+  margin-right: .5em;
+}
+
+.tabs__tab-configure--active button {
+  text-decoration: underline;
+}
+
 .tabs__tab-content {
   padding: 14px;
   background-color: #fff;
