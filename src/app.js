@@ -12,19 +12,19 @@ export default function App({ plugin }) {
   const [fieldObject, setFieldObject] = useState(fieldValue)
 
   const canEdit = plugin.parameters.instance.canEdit
-  const defaultFields = plugin.parameters.instance.defaultFields
-    .split(',')
-    .map(field => field.trim())
 
-  const titleField = defaultFields[0]
-  const descriptionField = defaultFields[1]
-  const imageField = defaultFields[2]
-  const socialImageObject = plugin.getFieldValue(imageField)
+  const fieldNames = {
+    titleField: plugin.parameters.instance.defaultTitleField,
+    descriptionField: plugin.parameters.instance.defaultDescriptionField,
+    imageField: plugin.parameters.instance.defaultImageField,
+  }
+
+  const socialImageObject = plugin.getFieldValue(fieldNames.imageField)
   const [socialTitle, setSocialTitle] = useState(
-    plugin.getFieldValue(titleField)
+    plugin.getFieldValue(fieldNames.titleField)
   )
   const [socialDescription, setSocialDescription] = useState(
-    plugin.getFieldValue(descriptionField)
+    plugin.getFieldValue(fieldNames.descriptionField)
   )
   const [socialImage, setSocialImage] = useState('')
 
@@ -40,7 +40,11 @@ export default function App({ plugin }) {
   Object.keys(plugin.fields).forEach((field) => {
     const fieldName = plugin.fields[field].attributes.api_key
 
-    if (defaultFields.indexOf(fieldName) !== -1) {
+    if (
+      fieldName === fieldNames.titleField ||
+      fieldName === fieldNames.descriptionField ||
+      fieldName === fieldNames.imageField
+    ) {
       plugin.addFieldChangeListener(fieldName, newValue =>
         changeSocialText(fieldName, newValue)
       )
@@ -49,15 +53,15 @@ export default function App({ plugin }) {
 
   async function changeSocialText(fieldName, newValue) {
     switch (fieldName) {
-      case titleField: {
+      case fieldNames.titleField: {
         setSocialTitle(newValue)
         break
       }
-      case descriptionField: {
+      case fieldNames.descriptionField: {
         setSocialDescription(newValue)
         break
       }
-      case imageField: {
+      case fieldNames.imageField: {
         setSocialImage(await getImageUrl(newValue))
         break
       }
@@ -88,7 +92,12 @@ export default function App({ plugin }) {
 
   return (
     <main className="container">
-      <Tabs fieldValue={fieldObject} onConfigureChange={configureChange} canConfigure={canEdit}>
+      <Tabs
+        fieldNames={fieldNames}
+        fieldValue={fieldObject}
+        onConfigureChange={configureChange}
+        canConfigure={canEdit}
+      >
         {socialTabs}
       </Tabs>
     </main>
