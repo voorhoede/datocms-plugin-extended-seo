@@ -1,0 +1,5 @@
+.help-text {
+  font-size: .75rem;
+  line-height: 1.2;
+  color: var(--label-color);
+}
