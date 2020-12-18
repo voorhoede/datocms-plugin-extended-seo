@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import './configure-tab.css'
 
-export default function ConfigureTab({ values, onChange }) {
+export default function ConfigureTab({ fieldNames, values, onChange }) {
   const [titleField, setTitleField] = useState(values?.title)
   const [descriptionField, setDescriptionField] = useState(values?.description)
 
@@ -29,6 +29,10 @@ export default function ConfigureTab({ values, onChange }) {
         defaultValue={titleField}
         onChange={onTitleChange}
       />
+      <p className="configure-tab__help help-text">
+        The {fieldNames?.titleField ? fieldNames.titleField : 'no'} field on the
+        page is used if left empty
+      </p>
 
       <label className="configure-tab__label" htmlFor="description">
         Description
@@ -41,11 +45,16 @@ export default function ConfigureTab({ values, onChange }) {
         defaultValue={descriptionField}
         onChange={onDescriptionChange}
       />
+      <p className="configure-tab__help help-text">
+        The {fieldNames?.descriptionField ? fieldNames.descriptionField : 'no'}{' '}
+        field on the page is used if left empty
+      </p>
     </section>
   )
 }
 
 ConfigureTab.propTypes = {
-  values: PropTypes.instanceOf(Object),
-  onChange: PropTypes.func.isRequired
+  fieldNames: PropTypes.object,
+  values: PropTypes.object,
+  onChange: PropTypes.func.isRequired,
 }

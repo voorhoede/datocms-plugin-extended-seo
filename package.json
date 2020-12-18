@@ -1,7 +1,7 @@
 {
   "name": "datocms-plugin-extended-seo",
   "homepage": "https://github.com/voorhoede/datocms-plugin-extended-seo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Extends SEO meta field",
   "main": "index.js",
   "scripts": {
@@ -54,12 +54,28 @@
           "hint": "When this is turned on a editor can edit the title and description fields of this seo block."
         },
         {
-          "id": "defaultFields",
-          "label": "Default fields",
+          "id": "defaultTitleField",
+          "label": "Default title fields",
           "type": "string",
           "required": false,
           "default": "",
-          "hint": "A comma seperated list of the name that matches the corresponding string field. [title field, description field, image field]"
+          "hint": "This needs to be a string corresponding to the name of the title field (string field)"
+        },
+        {
+          "id": "defaultDescriptionField",
+          "label": "Default description fields",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "hint": "This needs to be a string corresponding to the name of the description field (string field)"
+        },
+        {
+          "id": "defaultImageField",
+          "label": "Default image fields",
+          "type": "string",
+          "required": false,
+          "default": "",
+          "hint": "This needs to be a string corresponding to the name of the image field (image field)"
         }
       ]
     }

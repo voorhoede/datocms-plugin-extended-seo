@@ -12,7 +12,7 @@
 .tab-list-item button {
   padding: 0;
   text-transform: lowercase;
-  color: #848484;
+  color: var(--label-color);
 }
 
 .tab-list-item button:first-letter {
@@ -25,5 +25,5 @@
 }
 
 .tab-list-item--active button {
-  color: #34363a;
+  color: var(--dark-color);
 }

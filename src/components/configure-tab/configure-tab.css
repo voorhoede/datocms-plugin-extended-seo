@@ -1,10 +1,14 @@
 .configure-tab__label {
-  display: block;
-  color: #848484;
-  margin-bottom: .375rem;
   position: relative;
+  display: block;
+  margin-bottom: var(--spacing-default);
+  color: var(--label-color);
 }
 
 .configure-tab__input {
+  margin-bottom: var(--spacing-default);
+}
+
+.configure-tab__help {
   margin-bottom: 1.5rem;
 }

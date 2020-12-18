@@ -21,22 +21,23 @@ Secondly add an API token to the global settings of the plugin.
 
 When adding the plugin there are a few settings that are configurable.
 
-![](https://github.com/voorhoede/datocms-plugin-extended-seo/raw/master/docs/plugin-settings.png)
-
 #### *Editor can edit field*
 When you turn this function off the button for editing fields won't be shown. When this function is on it will show the *configure* button.
 
 ![](https://github.com/voorhoede/datocms-plugin-extended-seo/raw/master/docs/plugin-configure.png)
 
 #### *Default fields*
-This is a comma seperated list of field names that must show the data. The values have to be the name of a field.
 
-```Insert: a, b, c```
->* a: This field has to be a string value and will be shown as the title.
+**Default title field**
+This field has to be a string value and will be shown as the title.
 
->* b: This field has to be a string value and will be shown as the description.
+**Default description field**
+This field has to be a string value and will be shown as the description.
 
->* c: This field has to be a image. This is an object with the upload_id of the image. By adding this third variable there will be an image added to the preview.
+**Default image field**
+This field has to be a image. This is an object with the upload_id of the image. By adding this third variable there will be an image added to the preview.
+
+![](https://github.com/voorhoede/datocms-plugin-extended-seo/raw/master/docs/plugin-settings.png)
 
 When you edit the description or title field it will always show that value. When those fields are empty it will try and show fields from the model you are editing.
 
@@ -44,7 +45,7 @@ When you edit the description or title field it will always show that value. Whe
 
 ## Contributing
 
-See [contributing.md](https://github.com/voorhoede/datocms-plugin-json-table/blob/master/contributing.md).
+See [contributing.md](https://github.com/voorhoede/datocms-plugin-extended-seo/blob/master/contributing.md).
 
 ## Credits
 

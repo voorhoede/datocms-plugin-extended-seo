@@ -7,6 +7,7 @@ import './tabs.css'
 
 export default function Tabs({
   children,
+  fieldNames,
   fieldValue,
   onConfigureChange,
   canConfigure
@@ -51,7 +52,7 @@ export default function Tabs({
         })}
 
         {activeTab === 'configure' && (
-          <ConfigureTab values={fieldValue} onChange={onConfigureChange}>
+          <ConfigureTab fieldNames={fieldNames} values={fieldValue} onChange={onConfigureChange}>
             Configure
           </ConfigureTab>
         )}
@@ -62,6 +63,7 @@ export default function Tabs({
 
 Tabs.propTypes = {
   children: PropTypes.instanceOf(Array).isRequired,
+  fieldNames: PropTypes.object,
   fieldValue: PropTypes.object,
   onConfigureChange: PropTypes.func.isRequired,
   canConfigure: PropTypes.bool,
