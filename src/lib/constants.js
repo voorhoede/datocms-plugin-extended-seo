@@ -1,5 +1,5 @@
 export const socials = {
-  FACEBOOK: 'facebook-mobile',
+  FACEBOOK: 'facebook',
   LINKEDIN: 'linkedin',
   TWITTER: 'twitter',
   WHATSAPP: 'whatsapp',
