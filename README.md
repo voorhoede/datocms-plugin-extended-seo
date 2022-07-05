@@ -1,6 +1,10 @@
-# DatoCMS plugin: Extended Seo
+# :no_entry: [DEPRECATED] DatoCMS plugin: Extended Seo
 
-**This DatoCMS plugin extends the DatoCMS SEO meta field. It allows you to see a preview of different sources generated from [Heads Up](https://github.com/voorhoede/heads-up).**
+> Use [Extended SEO v2](https://www.datocms.com/marketplace/plugins/i/datocms-plugin-extended-seo-v2)
+
+**This DatoCMS plugin is deprecated and will NOT be updated anymore. It should still work but we recommend to use our [Extended SEO v2](https://www.datocms.com/marketplace/plugins/i/datocms-plugin-extended-seo-v2) plugin**
+
+This DatoCMS plugin extends the DatoCMS SEO meta field. It allows you to see a preview of different sources generated from [Heads Up](https://github.com/voorhoede/heads-up).
 
 ![](https://github.com/voorhoede/datocms-plugin-extended-seo/raw/master/docs/plugin.png)
 
