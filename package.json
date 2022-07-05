@@ -1,7 +1,7 @@
 {
   "name": "datocms-plugin-extended-seo",
   "homepage": "https://github.com/voorhoede/datocms-plugin-extended-seo",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Extends SEO meta field [DEPRECATED]",
   "main": "index.js",
   "engines": {
